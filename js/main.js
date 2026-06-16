@@ -51,5 +51,12 @@ document.addEventListener('DOMContentLoaded', () => {
 
     animatedElements.forEach(el => observer.observe(el));
 
-    
+    const contactForm = document.querySelector('.contact-form form');
+    const successMessage = document.querySelector('.form-success-message');
+
+    if (contactForm && successMessage) {
+        contactForm.addEventListener('submit', (event) => {
+            successMessage.classList.add('show');
+        });
+    }
 });
