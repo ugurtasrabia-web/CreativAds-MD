@@ -52,13 +52,25 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => observer.observe(el));
 
     const contactForm = document.querySelector('.contact-form form');
-    const successMessage = document.querySelector('.form-success-message');
+const successMessage = document.querySelector('.form-success-message');
 
-    if (contactForm && successMessage) {
-        contactForm.addEventListener('submit', (event) => {
-            event.preventDefault();
-            successMessage.classList.add('show');
-            contactForm.reset();
-        });
-    }
+if (contactForm && successMessage) {
+    contactForm.addEventListener('submit', async (event) => {
+        event.preventDefault();
+
+        try {
+            const response = await fetch(contactForm.action, {
+                method: 'POST',
+                body: new FormData(contactForm)
+            });
+
+            if (response.ok) {
+                contactForm.reset();
+                successMessage.classList.add('show');
+            }
+        } catch (error) {
+            console.error('Eroare:', error);
+        }
+    });
+}
 });
