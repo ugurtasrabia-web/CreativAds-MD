@@ -1096,10 +1096,9 @@ button,
 @media (max-width: 1199.98px) {
     .header-content {
         gap: 18px;
-        flex-wrap: wrap;
-        justify-content: center;
-        padding-top: 18px;
-        padding-bottom: 18px;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
     }
 
     .logo {
@@ -1450,7 +1449,15 @@ button,
     }
 
     .header-content {
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: nowrap;
         padding: 0 22px;
+    }
+
+    .logo-link {
+        order: 1;
     }
 
     .logo {
@@ -1460,7 +1467,8 @@ button,
 
     .burger-menu {
         display: flex;
-        order: 3;
+        order: 2;
+        margin-left: auto;
     }
 
     .header-btn {
