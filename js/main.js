@@ -52,25 +52,27 @@ document.addEventListener('DOMContentLoaded', () => {
     animatedElements.forEach(el => observer.observe(el));
 
     const contactForm = document.querySelector('.contact-form form');
-const successMessage = document.querySelector('.form-success-message');
+    const successMessage = document.querySelector('.form-success-message');
 
-if (contactForm && successMessage) {
-    contactForm.addEventListener('submit', async (event) => {
-        event.preventDefault();
+    if (contactForm && successMessage) {
+        contactForm.addEventListener('submit', async (event) => {
+            event.preventDefault();
 
-        try {
-            const response = await fetch(contactForm.action, {
-                method: 'POST',
-                body: new FormData(contactForm)
-            });
+            try {
+                const response = await fetch(contactForm.action, {
+                    method: 'POST',
+                    body: new FormData(contactForm)
+                });
+                console.log(response.status);
+                console.log(await response.text());
 
-            if (response.ok) {
-                contactForm.reset();
-                successMessage.classList.add('show');
+                if (response.ok) {
+                    contactForm.reset();
+                    successMessage.classList.add('show');
+                    }
+                } catch (error) {
+                console.error('Eroare:', error);
             }
-        } catch (error) {
-            console.error('Eroare:', error);
-        }
-    });
-}
+        });
+    }
 });
