@@ -56,9 +56,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
     if (contactForm && successMessage) {
         contactForm.addEventListener('submit', (event) => {
-            event.preventDefault();
             successMessage.classList.add('show');
-            contactForm.reset();
         });
     }
 });
